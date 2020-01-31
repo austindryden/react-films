@@ -9,6 +9,8 @@ function MovieList(){
             <li>Parasite</li>
             <li>The Dead Don't Die</li>
             <li>It Follows</li>
+            <li>The Fifth Element</li>
+            <li>John Carpenters Halloween</li>
         </ul>
 
     );
