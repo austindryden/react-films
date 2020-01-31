@@ -1,32 +1,59 @@
-import React, { useLayoutEffect } from "react";
+import React from "react";
 
+// const movies = [
+//     'The Witch',
+//     'The Lighthouse',
+//     'Parasite',
+//     "The Dead Don't Die",
+//     'It Follows',
+//     'The Fifth Element',
+//     'John Carpenters Halloween',
+//     'Drive'
+// ];
 
+class MovieList extends React.Component{
 
-function _handleClick(){
-    console.log("clicky clicky");
+    constructor(props){
+        super(props);
+        this.state = {
+            movies: [
+                'The Witch',
+                'The Lighthouse',
+                'Parasite',
+                "The Dead Don't Die",
+                'It Follows',
+                'The Fifth Element',
+                'John Carpenters Halloween',
+                'Drive'
+                ]            
+        };
+    }
+
+    render(){
+
+        return(
+            <ul>
+                {this.state.movies.map((movie, i) => <li onClick={()=>{this._handleClick(i)}}>{movie}</li>)}
+            </ul>
+
+        );
+    }
+
+    _handleClick = (index)=>{
+        console.log("clicky clicky");
+        console.log(index);
+        const newMovies = [...this.state.movies];
+        newMovies[index] += "!";
+        this.setState({
+            movies: newMovies
+        });
+        
+    }
+    
+    _handleMouseOver=(event)=>{
+        console.log("thingy has been moused over");
+        console.log(event.target);
+    }
 }
 
-function _handleMouseOver(){
-    console.log("thingy has been moused over");
-}
-
-class MovieList extends React.Component {
-
-render(){
-
-    return(
-        <ul>
-            <li onClick={_handleClick}>The Witch</li>
-            <li onMouseOver={_handleMouseOver} >The Lighthouse</li>
-            <li>Parasite</li>
-            <li>The Dead Don't Die</li>
-            <li>It Follows</li>
-            <li>The Fifth Element</li>
-            <li>John Carpenters Halloween</li>
-            <li>Drive</li>
-        </ul>
-
-    );
-}
-}
 export default MovieList;
